@@ -1,0 +1,41 @@
+Socket programming is low-level.
+
+A socket is an endpoint of a communication between two programs running on a network. Sockets are used to create a connection between a client program and a server program.
+In networking, the term socket has a different meaning. It is used for the combination of an IP address and a port number.
+
+Python offers two basic sockets modules. The first, Socket, provides the standard BSD Sockets API. The second, SocketServer, provides a server-centric class that simplifies the development of network servers. 
+Class method				Description
+Socket					Low-level networking interface (per the BSD API)
+socket.socket(family, type)		Create and return a new socket object
+socket.getfqdn(name)			Convert a string quad dotted IP address to a fully qualified domain name
+socket.gethostbyname(hostname)		Resolve a hostname to a string quad dotted IP address
+socket.fromfd(fd, family, type)		Create a socket object from an existing file descriptor
+
+Instance method				Description
+sock.bind( (adrs, port) )		Bind the socket to the address and port
+sock.accept()				Return a client socket (with peer address information)
+sock.listen(backlog)			Place the socket into the listening state, able to pend backlog outstanding connection requests
+sock.connect( (adrs, port) )		Connect the socket to the defined host and port
+sock.recv( buflen[, flags] )		Receive data from the socket, up to buflen bytes
+sock.recvfrom( buflen[, flags] )	Receive data from the socket, up to buflen bytes, returning also the remote host and port from which the data came
+sock.send( data[, flags] )		Send the data through the socket
+sock.sendto( data[, flags], addr )	Send the data through the socket
+sock.close()				Close the socket
+sock.getsockopt( lvl, optname )		Get the value for the specified socket option
+sock.setsockopt( lvl, optname, val )	Set the value for the specified socket option
+
+Network protocols
+TCP/IP is a suite of protocols used by devices to communicate over the Internet and most local networks. TCP is more reliable, has extensive error checking, and requires more resources. It is used by services such as HTTP, SMTP, or FTP. UDP is much less reliable, has limited error checking, and requires less resources. It is used by services such as VoIP.
+
+The socket.SOCK_STREAM is used to create a socket for TCP and socket.SOCK_DGRAM for UDP.
+
+Address families
+When we create a socket, we have to specify its address family. Then we can only use addresses of that type with the socket.
+
+AF_UNIX, AF_LOCAL - Local communication
+AF_INET 	  - IPv4 Internet protocols
+AF_INET6 	  - IPv6 Internet protocols
+AF_IPX - IPX 	  - Novell protocols
+AF_BLUETOOTH      - Wireless bluetooth protocols
+AF_PACKET	  - Low level packet interface
+
